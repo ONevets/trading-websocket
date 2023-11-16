@@ -67,11 +67,17 @@ export default function Book({ currencyId }) {
             if (json.data) {
                 const dummyAsk = [json.data[0].asks[0][0], json.data[0].asks[0][1]];
                 const dummyBid = [json.data[0].bids[0][0], json.data[0].bids[0][1]];
+                setAsks((prevAsks) => {
+                    const newAsks = [...prevAsks];
+                    newAsks.pop();
+                    return [dummyAsk, ...newAsks];
+                })
 
-                asks.pop()
-                bids.pop()
-                setAsks((prevState) => ([dummyAsk, ...prevState]))
-                setBids((prevState) => ([dummyBid, ...prevState]))
+                setBids((prevBids) => {
+                    const newBids = [...prevBids];
+                    newBids.pop();
+                    return [dummyBid, ...newBids];
+                })
                 console.log(asks)
                 console.log(bids)
             }

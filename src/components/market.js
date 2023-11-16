@@ -18,7 +18,7 @@ export default function Market({ currencyId, time }) {
                 const jsonData = json.data;
                 const dummyMarkets = []
                 jsonData.forEach((value) => {
-                    dummyMarkets.push({x: new Date(parseInt(value[0])), y: [value[1], value[2], value[3], value[4]]})
+                    dummyMarkets.push({ x: new Date(parseInt(value[0])), y: [value[1], value[2], value[3], value[4]] })
                 })
                 console.log(dummyMarkets)
                 setMarkets(dummyMarkets);
@@ -77,8 +77,8 @@ export default function Market({ currencyId, time }) {
             console.log("market open");
             marketSocket.current.send(marketParams);
         };
-        
-        
+
+
         marketSocket.current.onclose = () => {
             console.log("market closed");
         }
@@ -93,21 +93,24 @@ export default function Market({ currencyId, time }) {
     }, []);
 
     useEffect(() => {
-        if(marketSocket.current){
+        if (marketSocket.current) {
             marketSocket.current.onmessage = (event) => {
                 const json = JSON.parse(event.data);
                 if (json.data) {
                     const jsonData = json.data[0];
-    
+
                     // Only get when it is completed
                     if (jsonData[5] === "1") {
-                        const market = {x: new Date(parseInt(jsonData[0])), y: [jsonData[1], jsonData[2], jsonData[3], jsonData[4]]}
-                        markets.pop();
-                        setMarkets((prevState) => ([market, ...prevState]))
+                        const market = { x: new Date(parseInt(jsonData[0])), y: [jsonData[1], jsonData[2], jsonData[3], jsonData[4]] }
+                        setMarkets((prevMarket) => {
+                            const newMarket = [...prevMarket];
+                            newMarket.pop();
+                            return [market, ...newMarket];
+                        })
                     }
                 }
             }
-            
+
         }
         handleGraph(markets)
     }, [markets]);

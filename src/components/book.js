@@ -78,8 +78,6 @@ export default function Book({ currencyId }) {
                     newBids.pop();
                     return [dummyBid, ...newBids];
                 })
-                console.log(asks)
-                console.log(bids)
             }
         }
     }, [asks, bids]);

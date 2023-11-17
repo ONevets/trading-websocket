@@ -24,6 +24,14 @@ The regular REST API is still used to gather information for the initialization 
 
 This project still uses OKX's REST API to gather the history for the candlestick and order book
 
+## What can be made better?
+
+### Performance
+Personally, the OKX order book Websocket is very fast (10ms update) when fetching which might cause some perfomance issue. There is a documentation where I could use the REST API and fetch every second from there.
+
+### Then why not?
+This project is made to deepen my understanding for Websocket that is why I chose to do it with Websocket. But in practice, I agree that it is definitely better with REST API since most of the Websocket data provided  is so fast that it will most likely ruin the user's experience.
+
 ## Getting Started
 
 First, run the development server:

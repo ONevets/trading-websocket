@@ -43,14 +43,8 @@ export default function Book({ currencyId }) {
         booksSocket.current = new WebSocket("wss://ws.okx.com:8443/ws/v5/public")
 
         booksSocket.current.onopen = () => {
-            console.log("book open")
             booksSocket.current.send(bookParams);
         };
-
-        booksSocket.current.onclose = () => {
-            console.log("book closed");
-        }
-
 
     }
 

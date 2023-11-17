@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react";
+import styles from "@/styles/book.module.css"
 
 export default function Book({ currencyId }) {
     const [asks, setAsks] = useState([]);
@@ -90,20 +91,23 @@ export default function Book({ currencyId }) {
         :
         (
             <main>
-                <div>
-                    <h1>Order Book</h1>
-                </div>
-                <div>
+                <div className={styles.background}>
                     {asks.map((ask, index) => {
                         const bid = bids[index]
                         return (
-                            <div key={index}>
-                                <p>
-                                    asks: {ask[0]} volume: {ask[1]}
-                                </p>
-                                <p>
-                                    bids: {bid[0]} volume: {bid[1]}
-                                </p>
+                            <div className={styles.container} key={index}>
+                                <div className={styles.bid}>
+                                    <p>
+                                        Bid: {bid[0]} Volume: {bid[1]}
+                                    </p>
+                                </div>
+
+                                <div className={styles.ask}>
+                                    <p>
+                                        Ask: {ask[0]} Volume: {ask[1]}
+                                    </p>
+                                </div>
+
                             </div>
                         )
                     })}

@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
+import styles from "@/styles/market.module.css"
 
 const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -27,7 +28,6 @@ export default function Market({ currencyId, time }) {
     }
 
     const handleGraph = (data) => {
-        console.log("hey: ", data)
         const props = {
             series: [{
                 data: data
@@ -35,14 +35,12 @@ export default function Market({ currencyId, time }) {
             options: {
                 chart: {
                     type: 'candlestick',
-                    height: 350,
                     toolbar: {
-                        show: false
+                        show: true
                     }
                 },
                 title: {
-                    text: `${currencyId}`,
-                    align: 'left'
+                    text: undefined
                 },
                 xaxis: {
                     type: 'datetime'
@@ -123,10 +121,14 @@ export default function Market({ currencyId, time }) {
         :
         (
             <main>
-                <div id="chart">
-                    <ApexChart type="candlestick" options={chartProps.options} series={chartProps.series} height={350} width={500} />
+                <div className={styles.container}>
+                    <h2>Chart</h2>
+                    <div className={styles.chartContainer} id="chart">
+                        <ApexChart type="candlestick" options={chartProps.options} series={chartProps.series} height={400} width={"100%"} />
 
+                    </div>
                 </div>
+
             </main>
         )
 }

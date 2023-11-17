@@ -1,0 +1,48 @@
+.background{
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container p{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ask{
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    width: 350px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.bid{
+    display: inline-block;
+    background-color: #adb5bd;
+    width: 350px;
+    color: black;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+@media only screen and (min-width: 600px) {
+    .ask{
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    
+    .bid{
+        border-top-right-radius: 0;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+  }

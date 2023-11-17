@@ -21,7 +21,7 @@ export default function Market({ currencyId, time }) {
                 jsonData.forEach((value) => {
                     dummyMarkets.push({ x: new Date(parseInt(value[0])), y: [value[1], value[2], value[3], value[4]] })
                 })
-                console.log(dummyMarkets)
+                (dummyMarkets)
                 setMarkets(dummyMarkets);
             })
         setLoading(false)
@@ -72,13 +72,13 @@ export default function Market({ currencyId, time }) {
         marketSocket.current = new WebSocket("wss://ws.okx.com:8443/ws/v5/business")
 
         marketSocket.current.onopen = () => {
-            console.log("market open");
+            ("market open");
             marketSocket.current.send(marketParams);
         };
 
 
         marketSocket.current.onclose = () => {
-            console.log("market closed");
+            ("market closed");
         }
     }
 

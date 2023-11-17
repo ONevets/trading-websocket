@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Trading-Websocket
+
+This project is about gathering candlestick graph and order book of certain cryptocurrency with the use of Websocket. Currently it only offers BTC (Bitcoin), ETH (Ethereum), and ADA (Cardano). However it can easily be added by adding the crypto and the currency within this line: 
+
+```
+// Within src/app/page.js
+
+const listOfCurrency = ["BTC-USD", "ETH-USD", "ADA-USD"];
+```
+
+The format for the currency is based on https://www.okx.com/.
+
+## Websockets
+
+Websockets are used to communicate between the client and OKX Websocket API in realtime.
+
+The use for the Websocket in this project is to gather candlestick and order book for a cryptocurrency.
+
+Here is the [link](https://www.okx.com/docs-v5/en/#overview) to the documentation.
+
+## REST API
+
+The regular REST API is still used to gather information for the initialization for both the candlestick graph and order book
+
+This project still uses OKX's REST API to gather the history for the candlestick and order book
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Framework
+Next.js in Javascript
 
-## Learn More
+### API
+Huge thanks for OKX and its availability for the API. OKX gives public API for its Websocket and REST API making development easier. Since all of the API calls are all from OKX's public channel, no registration is requried.
 
-To learn more about Next.js, take a look at the following resources:
+[OKX API Documentation](https://www.okx.com/docs-v5/en/#overview)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Libraries
+This project uses some third party libraries. Below are the libraries used for this project and its reason why this project uses them:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Apexcharts - Candlestick graph
+- Bootstrap - CSS Framework in order to make a responsive page easier
